@@ -1,0 +1,287 @@
+@import 'vars';
+
+/*------------------------------*\
+    Base Styles
+\*------------------------------*/
+
+* {
+	font-family: $fontFamily;
+	color: #FFF;
+}
+
+body {
+	font-size: $defaultFontSize;
+	background: $bodyBackground;
+	margin: 0;
+	padding: 0;
+}
+
+.center-this {
+	display: flex;
+	justify-content: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+.btn {
+	color: #fff;
+	padding: 10px;
+	cursor: pointer;
+	font-size: $defaultFontSize;
+	font-weight: 400;
+	position: relative;
+	text-decoration: none;
+	text-transform: capitalize;
+	vertical-align: middle;
+	text-align: center;
+	border-radius: 3px;
+	min-width: 200px;
+	border: 1px solid;
+	min-height: 5px;
+	transition: all linear 0.3s;
+  
+	&:hover { 
+		text-decoration: none;
+		background: $grey;
+	}
+  
+}
+
+.btn-primary {
+	background: #000;
+}
+
+.btn-secondary {
+	background: $blue;
+}
+
+.hidden-on-desktop {
+	display: none !important;
+}
+
+.unstyled {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*------------------------------*\
+    Header/Footer Styles
+\*------------------------------*/
+
+.header-container,
+.footer-container {
+	width: 100%;
+	height: 150px;
+	background: $grey;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #FFF;
+}
+
+.header-container {
+	margin-bottom: 25px;
+}
+
+.footer-container {
+	margin-top: 25px;
+}
+
+/*------------------------------*\
+    Movie Item Styles
+\*------------------------------*/
+
+.movie-cards-container {
+	width: 90%;
+	margin: 0 auto;
+
+	.item {
+		width: 100%;
+		max-width: 1500px;
+		margin-bottom: 50px;
+	}
+
+	.image-container {
+		width: 100%;
+		height: 500px;
+		position: relative;
+		background-repeat: no-repeat;
+	    background-position: 50% 0;
+	    -ms-background-size: cover;
+	    -o-background-size: cover;
+	    -moz-background-size: cover;
+	    -webkit-background-size: cover;
+	    background-size: cover;
+
+	    &:hover {
+	    	.overlay {
+			  opacity: 1;
+			}
+	    }
+
+		.movie-title-container {
+			width: calc(100% - 30px);
+			height: 20%;
+			background: rgba(0,0,0,0.6);
+			display: flex;
+			align-items: center;
+			padding: 0px 15px;
+			position: absolute;
+			bottom: 0;
+
+			h2 {
+				width: 100%;
+
+				.movie-title {
+					font-weight: 1000;
+				}
+
+				.runtime {
+					float: right;
+				}
+			}
+
+
+
+			.image-container:hover .overlay {
+				opacity: 1;
+			}
+		}
+
+		.overlay {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			transition: .5s ease;
+			background: rgba(40, 40, 40, 0.9);
+
+			.director-list-container, .actor-list-container {
+				width: calc(50% - 30px);
+				height: calc(100% - 30px);
+				float: left;
+				padding: 15px;
+
+				h3 {
+					font-weight: 750;
+					font-size: 32px;
+				}
+
+				li {
+					margin-bottom: 15px;
+				}
+
+				.btn {
+					display: block;
+					width: 30%;
+				}
+			}
+		}
+	}
+
+	.rating-container {
+		width: calc(100% - 30px);
+		background: #FFF;
+		min-height: 30px;
+		color: #333333;
+		padding: 15px 15px;
+
+		span {
+			color: #333333;
+		}
+
+		input {
+			border: 0;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px);
+			clip: rect(1px, 1px, 1px, 1px);
+			opacity: 0;
+		}
+
+		label {
+			position: relative;
+			float: right;
+			color: #C8C8C8;
+		}
+
+		label:before {
+			margin: 5px;
+			content: "\f005";
+			font-family: FontAwesome;
+			display: inline-block;
+			font-size: 1.5em;
+			color: #ccc;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			user-select: none;
+		}
+
+		input:checked ~ label:before {
+			color: #FFC107;
+		}
+
+		label:hover ~ label:before {
+			color: #ffdb70;
+		}
+
+		label:hover:before {
+			color: #FFC107;
+		}
+
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.actor-list-container {
+		display: none;
+	}
+	.director-list-container {
+		width: calc(100% - 30px) !important;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+
+		.btn {
+			margin: 0 auto;
+
+			&.hidden-on-desktop {
+				display: block !important;
+			}
+		}
+	}
+}
+
+#mad-max {
+	.image-container {
+		background-image: url('http://mna.test/src/img/madmax.jpg');
+	}
+}
+
+#shutter-island {
+	.image-container {
+		background-image: url('http://mna.test/src/img/shutterisland.jpg');
+	}
+}
+
+#cars-3 {
+	.image-container {
+		background-image: url('http://mna.test/src/img/cars3.jpeg');
+	}
+}
+
+#friday-the-13th {
+	.image-container {
+		background-image: url('http://mna.test/src/img/fridaythe13th.jpg');
+	}
+}
